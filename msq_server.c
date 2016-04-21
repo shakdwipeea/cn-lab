@@ -40,9 +40,9 @@ main()
       if((f1=open(buf.mtext,O_RDONLY))!=-1)
 	{
         printf("\nSERVER : %s is found \nTransfering the contents.. \n",buf.mtext);
-		//filesize=lseek(f1,0,2);
-		//printf("\nSERVER : File size is %d\n",filesize);
-		//lseek(f1,0,0);//rewind file pointer to beginning
+		filesize=lseek(f1,0,2);
+		printf("\nSERVER : File size is %d\n",filesize);
+		lseek(f1,0,0);//rewind file pointer to beginning
 		n=read(f1,buf.mtext,filesize);
                buf_length = strlen(buf.mtext) + 1 ;
                if (msgsnd(msqid2, &buf, buf_length, IPC_NOWAIT) < 0) {
